@@ -11782,15 +11782,76 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Dictionary">Data Dictionary<a class="anchor-link" href="#Data-Dictionary">&#182;</a></h2><table>
+<thead><tr>
+<th style="text-align:left">Column</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TAG_NUMBER_MASKED</td>
+<td style="text-align:left">First three (3) characters masked with asterisks</td>
+</tr>
+</tbody>
+</table>
+<p>DATE_OF_INFRACTION |    Date the infraction occurred in YYYYMMDD format
+INFRACTION_CODE | Applicable Infraction code (numeric)
+INFRACTION_DESCRIPTION |    Short description of the infraction
+SET_FINE_AMOUNT |   Amount of set fine applicable (in dollars)
+TIME_OF_INFRACTION |    Time the infraction occurred  in HHMM format (24-hr clock)
+LOCATION1 | Code to denote proximity (see table below)
+LOCATION2 | Street address
+LOCATION3 | Code to denote proximity (optional)
+LOCATION4 | Street address (optional)
+PROVINCE |  Province or state code of vehicle licence plate</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Align tables in markdown</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">html</span>
+&lt;style&gt;
+    table {
+        margin-left: 0 !important
+    }
+    td, th {
+        text-align: left !important
+    }
+&lt;/style&gt;
 </pre></div>
 
 </div>
@@ -11806,13 +11867,220 @@ div#notebook {
 <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/coder/anaconda3/envs/dataquest/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
-  return f(*args, **kwds)
-/home/coder/anaconda3/envs/dataquest/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
-  return f(*args, **kwds)
+
+<div class="output_html rendered_html output_subarea ">
+<style>
+    table {
+        margin-left: 0 !important
+    }
+    td, th {
+        text-align: left !important
+    }
+</style>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/parking_tickets_2016/parking_tags_2016.csv&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2254761 entries, 0 to 2254760
+Data columns (total 12 columns):
+origin                    int64
+tag_number_masked         object
+date_of_infraction        int64
+infraction_code           float64
+infraction_description    object
+set_fine_amount           int64
+time_of_infraction        float64
+location1                 object
+location2                 object
+location3                 object
+location4                 object
+province                  object
+dtypes: float64(2), int64(3), object(7)
+memory usage: 959.6 MB
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>***03850</td>
+      <td>20160101</td>
+      <td>29.0</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>NR</td>
+      <td>49 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>***03851</td>
+      <td>20160101</td>
+      <td>29.0</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>1.0</td>
+      <td>NR</td>
+      <td>45 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>***98221</td>
+      <td>20160101</td>
+      <td>29.0</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2.0</td>
+      <td>NR</td>
+      <td>274 GEORGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>***85499</td>
+      <td>20160101</td>
+      <td>29.0</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2.0</td>
+      <td>NR</td>
+      <td>270 GEORGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>***03852</td>
+      <td>20160101</td>
+      <td>406.0</td>
+      <td>PARK-VEH. W/O VALID ONT PLATE</td>
+      <td>40</td>
+      <td>2.0</td>
+      <td>NR</td>
+      <td>45 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div>
 
 </div>
