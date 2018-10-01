@@ -11885,6 +11885,15 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>parking_tags_2016.csv</code> file was created using csvkit's csvstack to combine four CSV files.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
@@ -11900,7 +11909,7 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
@@ -12086,6 +12095,1515 @@ memory usage: 959.6 MB
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that some of these columns could be converted to data types that represent them a little better and possibly reduce the memory being used.</p>
+<p>For example we could investigate the <code>infraction_code</code> values to see if an int is better suited.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1605.0    4798
+1535.0    3513
+1606.0    3497
+1607.0    3454
+1608.0    3304
+1505.0    3153
+1610.0    3126
+950.0     3107
+945.0     3093
+1609.0    3079
+949.0     3055
+951.0     3042
+1611.0    2974
+940.0     2969
+1215.0    2960
+1140.0    2958
+953.0     2958
+947.0     2955
+952.0     2944
+946.0     2939
+1217.0    2927
+1210.0    2923
+944.0     2916
+1220.0    2909
+943.0     2905
+1230.0    2899
+1145.0    2890
+1225.0    2890
+942.0     2890
+936.0     2880
+          ... 
+629.0      120
+553.0      118
+558.0      117
+602.0      111
+603.0      109
+626.0      105
+616.0      104
+601.0      104
+552.0      102
+621.0      102
+551.0      100
+607.0       98
+554.0       96
+624.0       94
+608.0       93
+556.0       92
+622.0       90
+604.0       90
+606.0       88
+611.0       87
+623.0       85
+614.0       85
+618.0       84
+612.0       83
+617.0       82
+557.0       82
+559.0       82
+613.0       71
+619.0       70
+609.0       70
+Name: time_of_infraction, Length: 1440, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6958</th>
+      <td>1</td>
+      <td>***95889</td>
+      <td>20160102</td>
+      <td>9.0</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>N/S</td>
+      <td>GROSVENOR ST</td>
+      <td>W/O</td>
+      <td>BAY ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>6959</th>
+      <td>1</td>
+      <td>***65174</td>
+      <td>20160102</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23 LASCELLES BLVD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>11870</th>
+      <td>1</td>
+      <td>***13137</td>
+      <td>20160103</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>149 ICEBOAT TERRACE WAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>11871</th>
+      <td>1</td>
+      <td>***89885</td>
+      <td>20160103</td>
+      <td>9.0</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>6 EMPRESS AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>11872</th>
+      <td>1</td>
+      <td>***63273</td>
+      <td>20160103</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>2460 WESTON RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>11873</th>
+      <td>1</td>
+      <td>***06014</td>
+      <td>20160103</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91 AUGUSTA AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>17887</th>
+      <td>1</td>
+      <td>***83554</td>
+      <td>20160104</td>
+      <td>9.0</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>195 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>17888</th>
+      <td>1</td>
+      <td>***64703</td>
+      <td>20160104</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3101 WESTON RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>17889</th>
+      <td>1</td>
+      <td>***64713</td>
+      <td>20160104</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3101 WESTON RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>17890</th>
+      <td>1</td>
+      <td>***64716</td>
+      <td>20160104</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3101 WESTON RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24610</th>
+      <td>1</td>
+      <td>***61604</td>
+      <td>20160105</td>
+      <td>9.0</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>O/F</td>
+      <td>657 COLLEGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24611</th>
+      <td>1</td>
+      <td>***27713</td>
+      <td>20160105</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>111 ELIZABETH STREET</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24612</th>
+      <td>1</td>
+      <td>***95857</td>
+      <td>20160105</td>
+      <td>9.0</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>N/R</td>
+      <td>1289 PAPE AV</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24613</th>
+      <td>1</td>
+      <td>***62128</td>
+      <td>20160105</td>
+      <td>403.0</td>
+      <td>STOP-SIGNED HIGHWAY-RUSH HOUR</td>
+      <td>150</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>620 CHURCH ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24614</th>
+      <td>1</td>
+      <td>***62129</td>
+      <td>20160105</td>
+      <td>403.0</td>
+      <td>STOP-SIGNED HIGHWAY-RUSH HOUR</td>
+      <td>150</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>82 ADELAIDE ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24615</th>
+      <td>1</td>
+      <td>***62130</td>
+      <td>20160105</td>
+      <td>403.0</td>
+      <td>STOP-SIGNED HIGHWAY-RUSH HOUR</td>
+      <td>150</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>82 ADELAIDE ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>31548</th>
+      <td>1</td>
+      <td>***80864</td>
+      <td>20160106</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2 BRAHMS AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>31549</th>
+      <td>1</td>
+      <td>***15569</td>
+      <td>20160106</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3561 EGLINTON AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>31550</th>
+      <td>1</td>
+      <td>***18456</td>
+      <td>20160106</td>
+      <td>312.0</td>
+      <td>PARKING MACH-NOT USED/NO FEE</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3354 DUNDAS ST W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>BC</td>
+    </tr>
+    <tr>
+      <th>31551</th>
+      <td>1</td>
+      <td>***64980</td>
+      <td>20160106</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30 FALSTAFF AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38575</th>
+      <td>1</td>
+      <td>***34821</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2269 LAKESHORE BLVD W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38576</th>
+      <td>1</td>
+      <td>***78931</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>700 LAWRENCE AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38577</th>
+      <td>1</td>
+      <td>***78934</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>700 LAWRENCE AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38578</th>
+      <td>1</td>
+      <td>***30511</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>153 ISAAC DEVINS BLVD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38579</th>
+      <td>1</td>
+      <td>***40063</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>200 QUEEN'S QUAY E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38580</th>
+      <td>1</td>
+      <td>***40064</td>
+      <td>20160107</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>200 QUEEN'S QUAY E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38581</th>
+      <td>1</td>
+      <td>***53733</td>
+      <td>20160107</td>
+      <td>5.0</td>
+      <td>PARK-SIGNED HWY-PROHIBIT DY/TM</td>
+      <td>40</td>
+      <td>NaN</td>
+      <td>NR</td>
+      <td>478 KING ST W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>38582</th>
+      <td>1</td>
+      <td>***62139</td>
+      <td>20160107</td>
+      <td>403.0</td>
+      <td>STOP-SIGNED HIGHWAY-RUSH HOUR</td>
+      <td>150</td>
+      <td>NaN</td>
+      <td>NEAR</td>
+      <td>26 WELLINGTON STREET E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>45549</th>
+      <td>1</td>
+      <td>***10051</td>
+      <td>20160108</td>
+      <td>6.0</td>
+      <td>PARK HWY OVER PERMITTED TIME</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>45550</th>
+      <td>1</td>
+      <td>***27714</td>
+      <td>20160108</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>111 ELIZABETH STREET</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2219720</th>
+      <td>3</td>
+      <td>***25727</td>
+      <td>20161222</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>205 HUMBER COLLEGE BLVD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2219721</th>
+      <td>3</td>
+      <td>***57743</td>
+      <td>20161222</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2219722</th>
+      <td>3</td>
+      <td>***27950</td>
+      <td>20161222</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>DIXON RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2219723</th>
+      <td>3</td>
+      <td>***93532</td>
+      <td>20161222</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2219724</th>
+      <td>3</td>
+      <td>***31998</td>
+      <td>20161222</td>
+      <td>312.0</td>
+      <td>PARKING MACH-NOT USED/NO FEE</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31A PARLIAMENT ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225558</th>
+      <td>3</td>
+      <td>***40065</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>308 GRANDRAVINE DR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225559</th>
+      <td>3</td>
+      <td>***52001</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>190 EXBURY RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225560</th>
+      <td>3</td>
+      <td>***59925</td>
+      <td>20161223</td>
+      <td>347.0</td>
+      <td>PARK IN A FIRE ROUTE</td>
+      <td>250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1700 WILSON AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225561</th>
+      <td>3</td>
+      <td>***06119</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34 LEITH HILL RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225562</th>
+      <td>3</td>
+      <td>***18630</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6429 FINCH AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225563</th>
+      <td>3</td>
+      <td>***24276</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28 PLUM TREEWAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225564</th>
+      <td>3</td>
+      <td>***24278</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2 MASCOT PLACE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2225565</th>
+      <td>3</td>
+      <td>***14392</td>
+      <td>20161223</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2848 ELLESMERE RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2228783</th>
+      <td>3</td>
+      <td>***48932</td>
+      <td>20161224</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>500 TRETHEWEY DR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2228784</th>
+      <td>3</td>
+      <td>***87544</td>
+      <td>20161224</td>
+      <td>312.0</td>
+      <td>PARKING MACH-NOT USED/NO FEE</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11 KENWOOD AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2228785</th>
+      <td>3</td>
+      <td>***73461</td>
+      <td>20161224</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20 EDGECLIFF GOLFWAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2233564</th>
+      <td>3</td>
+      <td>***98490</td>
+      <td>20161227</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19 EVA RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2239935</th>
+      <td>3</td>
+      <td>***54295</td>
+      <td>20161228</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2239936</th>
+      <td>3</td>
+      <td>***17003</td>
+      <td>20161228</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5230 DUNDAS ST W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2239937</th>
+      <td>3</td>
+      <td>***74597</td>
+      <td>20161228</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>900 QUEEN'S PLATE DR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2245368</th>
+      <td>3</td>
+      <td>***12457</td>
+      <td>20161229</td>
+      <td>29.0</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>2468 YONGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251423</th>
+      <td>4</td>
+      <td>***73242</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>47 THORNCLIFE PK DR</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251424</th>
+      <td>4</td>
+      <td>***53397</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>20 TRUDELLE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>PQ</td>
+    </tr>
+    <tr>
+      <th>2251425</th>
+      <td>4</td>
+      <td>***19925</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>AT</td>
+      <td>2450 SHEPPARD AVE E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251426</th>
+      <td>4</td>
+      <td>***67727</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>130 WIDDICOMBE HILL BLVD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251427</th>
+      <td>4</td>
+      <td>***67729</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>130 WIDDICOMBE HILL BLVD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251428</th>
+      <td>4</td>
+      <td>***76168</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30 CHURCH ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2251429</th>
+      <td>4</td>
+      <td>***76908</td>
+      <td>20161230</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254759</th>
+      <td>4</td>
+      <td>***60163</td>
+      <td>20161231</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254760</th>
+      <td>4</td>
+      <td>***67517</td>
+      <td>20161231</td>
+      <td>3.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>920 SHEPPARD AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+<p>1329 rows × 12 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can convert this column since the values are really four digits representing 24 hour time in the format HHMM. There are some null values so we'll ignore those for now.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[34]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1629565</th>
+      <td>3</td>
+      <td>***38875</td>
+      <td>20160916</td>
+      <td>NaN</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>1042.0</td>
+      <td>NaN</td>
+      <td>2075 BAYVIEW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We find that there's one ticket with no infraction code. We could replace it with 0 if 0 isn't an infraction code. We can check that below.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We find there is infraction code numbered 0.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1629565</span><span class="p">,</span> <span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1629565</th>
+      <td>3</td>
+      <td>***38875</td>
+      <td>20160916</td>
+      <td>0.0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>1042.0</td>
+      <td>NaN</td>
+      <td>2075 BAYVIEW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2254761 entries, 0 to 2254760
+Data columns (total 12 columns):
+origin                    int64
+tag_number_masked         object
+date_of_infraction        int64
+infraction_code           uint16
+infraction_description    object
+set_fine_amount           int64
+time_of_infraction        float64
+location1                 object
+location2                 object
+location3                 object
+location4                 object
+province                  object
+dtypes: float64(1), int64(3), object(7), uint16(1)
+memory usage: 946.7 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We've managed to reduce memory usage by 13MB. We can convert more of our columns however. The origin column just tracks the spreadsheet number that the row belongs to. It was created when we used CSV kit to combine the files. We know there are only 4 spread sheets numbered 1-4 so we don't need an int64 to store the number. Let's use the int8 datatype instead.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int8&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2254761 entries, 0 to 2254760
+Data columns (total 12 columns):
+origin                    int8
+tag_number_masked         object
+date_of_infraction        int64
+infraction_code           uint16
+infraction_description    object
+set_fine_amount           int64
+time_of_infraction        float64
+location1                 object
+location2                 object
+location3                 object
+location4                 object
+province                  object
+dtypes: float64(1), int64(2), int8(1), object(7), uint16(1)
+memory usage: 931.7 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We've saved another 15MB.</p>
+
+</div>
+</div>
 </div>
     </div>
   </div>

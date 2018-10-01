@@ -43,13 +43,15 @@ import seaborn as sns
 get_ipython().run_cell_magic('html', '', '<style>\n    table {\n        margin-left: 0 !important\n    }\n    td, th {\n        text-align: left !important\n    }\n</style>')
 
 
+# The `parking_tags_2016.csv` file was created using csvkit's csvstack to combine four CSV files.
+
 # In[14]:
 
 
 tickets = pd.read_csv("data/parking_tickets_2016/parking_tags_2016.csv")
 
 
-# In[17]:
+# In[31]:
 
 
 tickets.info(memory_usage='deep')
@@ -60,3 +62,83 @@ tickets.info(memory_usage='deep')
 
 tickets.head()
 
+
+# We can see that some of these columns could be converted to data types that represent them a little better and possibly reduce the memory being used.
+# 
+# For example we could investigate the `infraction_code` values to see if an int is better suited.
+
+# In[19]:
+
+
+tickets['time_of_infraction'].value_counts()
+
+
+# In[26]:
+
+
+tickets.loc[ tickets['time_of_infraction'].isnull() == True]['']
+
+
+# We can convert this column since the values are really four digits representing 24 hour time in the format HHMM. There are some null values so we'll ignore those for now.
+
+# In[29]:
+
+
+tickets['time_of_infraction'] = tickets['time_of_infraction'].astype('uint16', errors='ignore')
+
+
+# In[34]:
+
+
+tickets.loc[ tickets['infraction_code'].isnull() == True]
+
+
+# We find that there's one ticket with no infraction code. We could replace it with 0 if 0 isn't an infraction code. We can check that below.
+
+# In[36]:
+
+
+tickets[tickets['infraction_code'] == 0]
+
+
+# We find there is infraction code numbered 0.
+
+# In[42]:
+
+
+tickets.loc[1629565, 'infraction_code'] = 0
+
+
+# In[43]:
+
+
+tickets[tickets['infraction_code'] == 0]
+
+
+# In[46]:
+
+
+tickets['infraction_code'] = tickets['infraction_code'].astype('uint16')
+
+
+# In[47]:
+
+
+tickets.info(memory_usage='deep')
+
+
+# We've managed to reduce memory usage by 13MB. We can convert more of our columns however. The origin column just tracks the spreadsheet number that the row belongs to. It was created when we used CSV kit to combine the files. We know there are only 4 spread sheets numbered 1-4 so we don't need an int64 to store the number. Let's use the int8 datatype instead.
+
+# In[48]:
+
+
+tickets['origin'] = tickets['origin'].astype('int8')
+
+
+# In[49]:
+
+
+tickets.info(memory_usage='deep')
+
+
+# We've saved another 15MB.
