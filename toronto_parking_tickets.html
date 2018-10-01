@@ -13605,6 +13605,123 @@ memory usage: 931.7 MB
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[50]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>30     1100768
+50      337943
+40      286443
+60      211243
+150     119647
+15      119414
+100      46367
+450      16043
+250      14687
+90         920
+300        881
+0          225
+55         177
+200          3
+Name: set_fine_amount, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2254761 entries, 0 to 2254760
+Data columns (total 12 columns):
+origin                    int8
+tag_number_masked         object
+date_of_infraction        int64
+infraction_code           uint16
+infraction_description    object
+set_fine_amount           uint16
+time_of_infraction        float64
+location1                 object
+location2                 object
+location3                 object
+location4                 object
+province                  object
+dtypes: float64(1), int64(1), int8(1), object(7), uint16(2)
+memory usage: 918.8 MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exploring-Values">Exploring Values<a class="anchor-link" href="#Exploring-Values">&#182;</a></h2><p>Now that we've loaded the data and tried to reduce it's memory usage we can explore some of the columns to find things of interest.</p>
+<p>A column of interest of course is the fine amounts so let's look at that first.</p>
+
+</div>
+</div>
+</div>
     </div>
   </div>
 </body>

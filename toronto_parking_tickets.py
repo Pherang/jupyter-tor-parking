@@ -142,3 +142,27 @@ tickets.info(memory_usage='deep')
 
 
 # We've saved another 15MB.
+
+# In[50]:
+
+
+tickets['set_fine_amount'].value_counts()
+
+
+# In[51]:
+
+
+tickets['set_fine_amount'] = tickets['set_fine_amount'].astype('uint16')
+
+
+# In[52]:
+
+
+tickets.info(memory_usage='deep')
+
+
+# ## Exploring Values
+# 
+# Now that we've loaded the data and tried to reduce it's memory usage we can explore some of the columns to find things of interest.
+# 
+# A column of interest of course is the fine amounts so let's look at that first.
