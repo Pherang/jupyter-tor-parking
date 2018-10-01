@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-Parking-Tickets-Mean-for-Toronto">What Parking Tickets Mean for Toronto<a class="anchor-link" href="#What-Parking-Tickets-Mean-for-Toronto">&#182;</a></h1><p>Parking violations and parking tickets are a contentious topic for Torontonians.</p>
+<h1 id="What-Parking-Tickets-Mean-for-Toronto">What Parking Tickets Mean for Toronto<a class="anchor-link" href="#What-Parking-Tickets-Mean-for-Toronto">&#182;</a></h1><p>Parking violations and parking tickets are a contentious topic for Torontonians. Drivers are subjected to misleading signs, police blitzes, and towings.</p>
 <p>Toronto parking regulations have a reputation for being confusing and misleading. In this notebook we study parking tickets and to see what impact they have on the city and its citizens.</p>
 <p>The data was obtained form the city of Toronto's Open Data catalogue and can be downloaded <a href="https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#75d14c24-3b7e-f344-4412-d8fd41f89455">here</a></p>
 
@@ -11815,7 +11815,7 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11825,6 +11825,27 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/coder/anaconda3/envs/dataquest/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+/home/coder/anaconda3/envs/dataquest/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+  return f(*args, **kwds)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -11840,7 +11861,7 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">html</span>
@@ -11896,7 +11917,7 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/parking_tickets_2016/parking_tags_2016.csv&quot;</span><span class="p">)</span>
@@ -11909,7 +11930,7 @@ PROVINCE |  Province or state code of vehicle licence plate</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
@@ -11956,7 +11977,7 @@ memory usage: 959.6 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11972,7 +11993,7 @@ memory usage: 959.6 MB
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -12108,7 +12129,7 @@ memory usage: 959.6 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -12124,7 +12145,7 @@ memory usage: 959.6 MB
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -12202,10 +12223,10 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">][</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12218,7 +12239,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13194,7 +13215,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -13207,7 +13228,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
@@ -13223,7 +13244,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[34]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13298,7 +13319,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
@@ -13314,7 +13335,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13374,7 +13395,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1629565</span><span class="p">,</span> <span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -13387,7 +13408,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
@@ -13403,7 +13424,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[43]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13469,7 +13490,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
@@ -13482,7 +13503,7 @@ Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
@@ -13538,7 +13559,7 @@ memory usage: 946.7 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int8&#39;</span><span class="p">)</span>
@@ -13551,7 +13572,7 @@ memory usage: 946.7 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
@@ -13607,7 +13628,7 @@ memory usage: 931.7 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -13623,7 +13644,7 @@ memory usage: 931.7 MB
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[50]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -13654,7 +13675,7 @@ Name: set_fine_amount, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
@@ -13667,7 +13688,7 @@ Name: set_fine_amount, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">memory_usage</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
@@ -13718,6 +13739,288 @@ memory usage: 918.8 MB
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Exploring-Values">Exploring Values<a class="anchor-link" href="#Exploring-Values">&#182;</a></h2><p>Now that we've loaded the data and tried to reduce it's memory usage we can explore some of the columns to find things of interest.</p>
 <p>A column of interest of course is the fine amounts so let's look at that first.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0          225
+15      119414
+30     1100768
+40      286443
+50      337943
+55         177
+60      211243
+90         920
+100      46367
+150     119647
+200          3
+250      14687
+300        881
+450      16043
+Name: set_fine_amount, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[21]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>count    2.254761e+06
+mean     4.864196e+01
+std      4.782018e+01
+min      0.000000e+00
+25%      3.000000e+01
+50%      3.000000e+01
+75%      5.000000e+01
+max      4.500000e+02
+Name: set_fine_amount, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fines</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">fines</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fine Amount&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ticket Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tickets and Fines&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5,1,&#39;Tickets and Fines&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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MHbsWLz++utISEgQRs/jxo3D77//jjVr1qBbt25wc3ODvb09bt68iQsXLuDw4cMYOHAgvvvuO2F7AwcOxJYtWzBq1Ci4urri+eefx0svvQQPDw98+OGHuHDhAvr27Qt7e3s0btwYJ0+exC+//IKWLVti/PjxFe7vpEmTsHHjRgQEBOD111+Hra0tTp06hX379sHX1xeJiYmV/kzNzc2xbNkyBAQEwMvLC76+vrCzs0N6ejqys7Ph6uoq6in3qvL555/jzz//xGeffYbvv/8effr0gbW1Na5evYpz587h6NGjiIqKgpOTEwBgwoQJaNKkCfr06YM2bdpAJpPh6NGjOHLkCF544QW+hKEWYtElqgJz5sxBr169sHr1auzfvx+3b9+GpaUlOnXqhH/9618Vrv/qq68iMTERfn5+8PX1xffffy9cW42OjsbQoUMRHx+PQ4cO4caNG2jevDns7OwwadIk+Pv7G2xr0aJFaNCgAVJSUpCRkYGHDx/izTffhIeHB9577z389NNPOH78uDBStbOzQ1BQEIKDg8uc3vS4l156CcnJyViwYAH27t2Lhw8f4qWXXsI333yD5s2bi1J0AcDHxwfbtm1DVFQUduzYgUaNGsHV1RU///wzli5dWiuKbrNmzbBz506sX78eCQkJSE5ORlFREaysrODg4ICPP/7Y4DT9J598gpSUFPz+++/4+eef8dxzz6F169aIiIhAYGDgM0+Vouoj02q1xj3njYiIiCqF13SJiIgkwqJLREQkERZdIiIiibDoEhERSYRFl4iISCIsukRERBJh0SUiIpIIi24t8vjj4RiLsep6rLq4T4xVu2JVRRwWXSIiIomw6BIREUmERZeIiEgiLLpEREQSYdElIiKSCIsuERGRRFh0iYiIJMKiS0REJJGG1Z0A1Q+F+4eV2WYHoPBi6W1mg3ZXTUJERNWAI10iIiKJsOgSERFJhEWXiIhIIiy6REREEmHRJSIikgiLLhERkURYdImIiCTCoktERCQRFl0iIiKJsOgSERFJhEWXiIhIIiy6REREEmHRJSIikgiLLhERkURYdImIiCRSrUU3LS0NY8aMQceOHSGXy7Fx40aDdp1Oh8jISHTo0AE2Njbw8vLCqVOnDPpotVoEBgbC3t4e9vb2CAwMhFarNehz8uRJeHp6wsbGBh07dkRUVBR0Op1Bnx07dkCp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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that almost all of the tickets given out have fines of 30 dollars. There are some tickets for</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>30     48.819720
+50     14.987974
+40     12.703919
+60      9.368753
+150     5.306416
+15      5.296082
+100     2.056404
+450     0.711517
+250     0.651377
+90      0.040803
+300     0.039073
+0       0.009979
+55      0.007850
+200     0.000133
+Name: set_fine_amount, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ticket_total</span> <span class="o">=</span> <span class="n">fines</span> <span class="o">*</span> <span class="n">fines</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ticket_total</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>109675985.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All ticket fines are worth $109,675,985 in revenue. Tickets are challenged in court and they can reduced or dismissed entirely.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>According to the city of Toronto's Revenue Fact Sheet <a href="https://www.toronto.ca/city-government/budget-finances/city-finance/long-term-financial-plan/city-revenue-fact-sheet/">here</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="revenue_options_kpmg.png" alt="revenue options"></p>
 
 </div>
 </div>
