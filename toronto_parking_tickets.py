@@ -14,16 +14,16 @@
 # | Column | Meaning |
 # | :--- | :--- |
 # |TAG_NUMBER_MASKED |	First three (3) characters masked with asterisks |
-# DATE_OF_INFRACTION |	Date the infraction occurred in YYYYMMDD format
-# INFRACTION_CODE	| Applicable Infraction code (numeric)
-# INFRACTION_DESCRIPTION |	Short description of the infraction
-# SET_FINE_AMOUNT |	Amount of set fine applicable (in dollars)
-# TIME_OF_INFRACTION |	Time the infraction occurred  in HHMM format (24-hr clock)
-# LOCATION1 |	Code to denote proximity (see table below)
-# LOCATION2 |	Street address
-# LOCATION3 |	Code to denote proximity (optional)
-# LOCATION4 |	Street address (optional)
-# PROVINCE |	Province or state code of vehicle licence plate
+# |DATE_OF_INFRACTION |	Date the infraction occurred in YYYYMMDD format
+# |INFRACTION_CODE	| Applicable Infraction code (numeric)
+# |INFRACTION_DESCRIPTION |	Short description of the infraction
+# |SET_FINE_AMOUNT |	Amount of set fine applicable (in dollars)
+# |TIME_OF_INFRACTION |	Time the infraction occurred  in HHMM format (24-hr clock)
+# |LOCATION1 |	Code to denote proximity (see table below)|
+# |LOCATION2 |	Street address|
+# |LOCATION3 |	Code to denote proximity (optional)|
+# |LOCATION4 |	Street address (optional)|
+# |PROVINCE |	Province or state code of vehicle licence plate|
 # 
 
 # In[1]:
