@@ -9,7 +9,9 @@
 # 
 # The data was obtained form the city of Toronto's Open Data catalogue and can be downloaded [here](https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#75d14c24-3b7e-f344-4412-d8fd41f89455)
 
-# In[64]:
+# Align tables in markdown
+
+# In[2]:
 
 
 get_ipython().run_cell_magic('html', '', '<style>\n    table {\n        margin-left: 0 !important\n    }\n    td, th {\n        text-align: left !important\n    }\n</style>')
@@ -40,8 +42,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-# Align tables in markdown
 
 # The `parking_tags_2016.csv` file was created using csvkit's csvstack to combine four CSV files.
 
@@ -275,21 +275,40 @@ fine_types[['infraction_code', 'infraction_description','set_fine_amount']].sort
 
 # Let's look at the top 10 infractions with a fine of $30.
 
-# In[62]:
+# In[116]:
 
 
-top_10 = fine_30['infraction_code'].value_counts()
-sns.barplot(top_10[:10].index, top_10[:10])
+top_10 = fine_30['infraction_code'].value_counts()[:10]
+top_10 = top_10.sort_values(ascending=False)
+top_10.plot.bar()
+plt.style.use('ggplot')
 plt.xlabel('Infraction Code')
+plt.xticks(rotation=45)
 plt.ylabel('Ticket Count')
+plt.title('Top 10 Infraction Codes')
+plt.show()
 
 
 # ### Times that Tickets were Given
 # 
 # We see that most parking tickets are given out around 4pm, and between 9-10am.
 
-# In[6]:
+# In[163]:
 
 
-tickets['time_of_infraction'].value_counts()
+times = tickets['time_of_infraction'].value_counts()
+times = times.sort_index()
+
+
+# In[183]:
+
+
+fig, ax = plt.subplots()
+
+ax.hist(tickets['time_of_infraction'], range=(0,2400), bins=24, color='orange')
+plt.xlabel('Time HH:MM')
+plt.ylabel('Ticket Frequency')
+plt.axvline(1200, c='green', label='Noon', linewidth=2)
+plt.title('Ticket Times')
+plt.show()
 
