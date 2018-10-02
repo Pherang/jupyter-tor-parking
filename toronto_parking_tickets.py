@@ -67,11 +67,7 @@ tickets.head()
 # 
 # For example we could investigate the `infraction_code` values to see if an int is better suited.
 
-# In[6]:
-
-
-tickets['time_of_infraction'].value_counts()
-
+# Around 4pm is when most tickets are given out. Interesting.
 
 # In[7]:
 
@@ -230,10 +226,11 @@ ticket_total.sum()
 # 
 # We can explore the infractions and break it down to see what parking rules drivers are breaking.
 
-# In[39]:
+# In[63]:
 
 
 infraction_info = tickets[['infraction_code','infraction_description','set_fine_amount']].drop_duplicates(subset='infraction_code').sort_values('infraction_code')
+infraction_info
 
 
 # In[28]:
@@ -242,16 +239,18 @@ infraction_info = tickets[['infraction_code','infraction_description','set_fine_
 tickets['infraction_code'].value_counts()
 
 
+# Let's filter for tickets with a fine of $30.
+
 # In[30]:
 
 
 fine_30 = tickets[tickets['set_fine_amount'] == 30]
 
 
-# In[31]:
+# In[56]:
 
 
-fine_30
+fine_30['infraction_code'].value_counts()
 
 
 # In[33]:
@@ -268,8 +267,29 @@ fine_types['infraction_code'].count()
 
 # There are 43 different infractions with a set fine of $30.
 
-# In[40]:
+# In[52]:
 
 
-infraction_info
+fine_types[['infraction_code', 'infraction_description','set_fine_amount']].sort_values('infraction_code')
+
+
+# Let's look at the top 10 infractions with a fine of $30.
+
+# In[62]:
+
+
+top_10 = fine_30['infraction_code'].value_counts()
+sns.barplot(top_10[:10].index, top_10[:10])
+plt.xlabel('Infraction Code')
+plt.ylabel('Ticket Count')
+
+
+# ### Times that Tickets were Given
+# 
+# We see that most parking tickets are given out around 4pm, and between 9-10am.
+
+# In[6]:
+
+
+tickets['time_of_infraction'].value_counts()
 

@@ -12127,99 +12127,14 @@ memory usage: 959.6 MB
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Around 4pm is when most tickets are given out. Interesting.</p>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>1605.0    4798
-1535.0    3513
-1606.0    3497
-1607.0    3454
-1608.0    3304
-1505.0    3153
-1610.0    3126
-950.0     3107
-945.0     3093
-1609.0    3079
-949.0     3055
-951.0     3042
-1611.0    2974
-940.0     2969
-1215.0    2960
-1140.0    2958
-953.0     2958
-947.0     2955
-952.0     2944
-946.0     2939
-1217.0    2927
-1210.0    2923
-944.0     2916
-1220.0    2909
-943.0     2905
-1230.0    2899
-1145.0    2890
-1225.0    2890
-942.0     2890
-936.0     2880
-          ... 
-629.0      120
-553.0      118
-558.0      117
-602.0      111
-603.0      109
-626.0      105
-616.0      104
-601.0      104
-552.0      102
-621.0      102
-551.0      100
-607.0       98
-554.0       96
-624.0       94
-608.0       93
-556.0       92
-622.0       90
-604.0       90
-606.0       88
-611.0       87
-623.0       85
-614.0       85
-618.0       84
-612.0       83
-617.0       82
-557.0       82
-559.0       82
-613.0       71
-619.0       70
-609.0       70
-Name: time_of_infraction, Length: 1440, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -14038,23 +13953,11 @@ We know the most common fine is $30 and that the number of fines is more than 1M
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">infraction_info</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">,</span><span class="s1">&#39;infraction_description&#39;</span><span class="p">,</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">infraction_info</span>
 </pre></div>
 
 </div>
@@ -14067,1152 +13970,7 @@ We know the most common fine is $30 and that the number of fines is more than 1M
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>5      401636
-3      367638
-29     339145
-210    213327
-207    131511
-2      116498
-9      110457
-8       76414
-403     74267
-406     68271
-6       64334
-15      35490
-192     26024
-28      25909
-312     21172
-30      19879
-134     15933
-347     14687
-16      13334
-415     12787
-337      8385
-4        6567
-48       6320
-367      6254
-257      6089
-384      6088
-336      5391
-14       4938
-250      4483
-419      4373
-        ...  
-19          2
-334         2
-413         2
-25          1
-434         1
-26          1
-152         1
-385         1
-354         1
-350         1
-348         1
-318         1
-306         1
-222         1
-432         1
-206         1
-182         1
-149         1
-35          1
-131         1
-130         1
-90          1
-89          1
-80          1
-73          1
-45          1
-43          1
-41          1
-39          1
-0           1
-Name: infraction_code, Length: 181, dtype: int64</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[31]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>origin</th>
-      <th>tag_number_masked</th>
-      <th>date_of_infraction</th>
-      <th>infraction_code</th>
-      <th>infraction_description</th>
-      <th>set_fine_amount</th>
-      <th>time_of_infraction</th>
-      <th>location1</th>
-      <th>location2</th>
-      <th>location3</th>
-      <th>location4</th>
-      <th>province</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>***03850</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>NR</td>
-      <td>49 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>***03851</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>1.0</td>
-      <td>NR</td>
-      <td>45 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>***98221</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2.0</td>
-      <td>NR</td>
-      <td>274 GEORGE ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>***85499</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2.0</td>
-      <td>NR</td>
-      <td>270 GEORGE ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1</td>
-      <td>***16117</td>
-      <td>20160101</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>3.0</td>
-      <td>NaN</td>
-      <td>621 KING ST W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1</td>
-      <td>***03853</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>3.0</td>
-      <td>NR</td>
-      <td>43 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1</td>
-      <td>***03854</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>4.0</td>
-      <td>NR</td>
-      <td>39 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>1</td>
-      <td>***03856</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>5.0</td>
-      <td>NR</td>
-      <td>31 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>1</td>
-      <td>***12254</td>
-      <td>20160101</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>6.0</td>
-      <td>NaN</td>
-      <td>25 MUTUAL ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>1</td>
-      <td>***98222</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>7.0</td>
-      <td>NR</td>
-      <td>167 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1</td>
-      <td>***27500</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>7.0</td>
-      <td>NR</td>
-      <td>163 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>1</td>
-      <td>***98223</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>8.0</td>
-      <td>NR</td>
-      <td>157 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>1</td>
-      <td>***27501</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>8.0</td>
-      <td>NR</td>
-      <td>161 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>1</td>
-      <td>***98224</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>9.0</td>
-      <td>NR</td>
-      <td>157 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>1</td>
-      <td>***03857</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>9.0</td>
-      <td>NR</td>
-      <td>92 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>1</td>
-      <td>***27502</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>9.0</td>
-      <td>NR</td>
-      <td>151 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NY</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>1</td>
-      <td>***98225</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>10.0</td>
-      <td>NR</td>
-      <td>149 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>QC</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>1</td>
-      <td>***03858</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>10.0</td>
-      <td>NR</td>
-      <td>100 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>1</td>
-      <td>***03859</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>11.0</td>
-      <td>NR</td>
-      <td>100 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>1</td>
-      <td>***03860</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>12.0</td>
-      <td>NR</td>
-      <td>100 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>1</td>
-      <td>***03861</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>13.0</td>
-      <td>NR</td>
-      <td>100 GLOUCESTER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>1</td>
-      <td>***27504</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>13.0</td>
-      <td>NR</td>
-      <td>79 GERRARD ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>1</td>
-      <td>***03862</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>15.0</td>
-      <td>NR</td>
-      <td>80 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>1</td>
-      <td>***03863</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>16.0</td>
-      <td>NR</td>
-      <td>80 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>1</td>
-      <td>***03864</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>16.0</td>
-      <td>NR</td>
-      <td>88 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>1</td>
-      <td>***03865</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>17.0</td>
-      <td>NR</td>
-      <td>88 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>1</td>
-      <td>***98226</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>18.0</td>
-      <td>NR</td>
-      <td>43 BRITAIN ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>1</td>
-      <td>***03866</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>19.0</td>
-      <td>NR</td>
-      <td>62 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>1</td>
-      <td>***27505</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>19.0</td>
-      <td>NR</td>
-      <td>45 BRITAIN ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>1</td>
-      <td>***03867</td>
-      <td>20160101</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>20.0</td>
-      <td>NR</td>
-      <td>64 CHARLES ST E</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2254691</th>
-      <td>4</td>
-      <td>***59033</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2314.0</td>
-      <td>NR</td>
-      <td>77 MCGILL ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>QC</td>
-    </tr>
-    <tr>
-      <th>2254692</th>
-      <td>4</td>
-      <td>***48980</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2315.0</td>
-      <td>NaN</td>
-      <td>208 QUEENS QUAY W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254693</th>
-      <td>4</td>
-      <td>***18780</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2315.0</td>
-      <td>NaN</td>
-      <td>5 VICORA LINKWAY</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254694</th>
-      <td>4</td>
-      <td>***76764</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2315.0</td>
-      <td>NaN</td>
-      <td>3401 DUFFERIN ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254696</th>
-      <td>4</td>
-      <td>***59034</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2315.0</td>
-      <td>NR</td>
-      <td>77 MCGILL ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254704</th>
-      <td>4</td>
-      <td>***59036</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2325.0</td>
-      <td>NR</td>
-      <td>237 VICTORIA ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254705</th>
-      <td>4</td>
-      <td>***11870</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2326.0</td>
-      <td>NaN</td>
-      <td>108 CHESTNUT ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254716</th>
-      <td>4</td>
-      <td>***12257</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2333.0</td>
-      <td>AT</td>
-      <td>800 LAWRENCE AVE W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254718</th>
-      <td>4</td>
-      <td>***12258</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2335.0</td>
-      <td>AT</td>
-      <td>800 LAWRENCE AVE W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254719</th>
-      <td>4</td>
-      <td>***59037</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2337.0</td>
-      <td>S/S</td>
-      <td>WILTON ST</td>
-      <td>E/O</td>
-      <td>GEORGE ST S</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254720</th>
-      <td>4</td>
-      <td>***12259</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2337.0</td>
-      <td>AT</td>
-      <td>800 LAWRENCE AVE W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254721</th>
-      <td>4</td>
-      <td>***59038</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2338.0</td>
-      <td>E/S</td>
-      <td>GEORGE ST S</td>
-      <td>N/O</td>
-      <td>WILTON ST</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254722</th>
-      <td>4</td>
-      <td>***00360</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2338.0</td>
-      <td>AT</td>
-      <td>15 EVA RD</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254726</th>
-      <td>4</td>
-      <td>***56384</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2342.0</td>
-      <td>NaN</td>
-      <td>80 JOHN ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254730</th>
-      <td>4</td>
-      <td>***92315</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2346.0</td>
-      <td>NR</td>
-      <td>26 TICHESTER RD</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>AB</td>
-    </tr>
-    <tr>
-      <th>2254731</th>
-      <td>4</td>
-      <td>***59039</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2347.0</td>
-      <td>NR</td>
-      <td>89 HENRY LANE TER</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254732</th>
-      <td>4</td>
-      <td>***92316</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2348.0</td>
-      <td>NR</td>
-      <td>14 TICHESTER RD</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254733</th>
-      <td>4</td>
-      <td>***39751</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2349.0</td>
-      <td>NR</td>
-      <td>729 CARLAW AVE</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254734</th>
-      <td>4</td>
-      <td>***66104</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2349.0</td>
-      <td>AT</td>
-      <td>550 BIRCHMOUNT RD</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254735</th>
-      <td>4</td>
-      <td>***59040</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2350.0</td>
-      <td>N/S</td>
-      <td>THE ESPLANADE</td>
-      <td>E/O</td>
-      <td>FREDERICK ST</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254736</th>
-      <td>4</td>
-      <td>***39752</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2350.0</td>
-      <td>NR</td>
-      <td>715 CARLAW AVE</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254739</th>
-      <td>4</td>
-      <td>***59041</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2351.0</td>
-      <td>N/S</td>
-      <td>THE ESPLANADE</td>
-      <td>E/O</td>
-      <td>FREDERICK ST</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254741</th>
-      <td>4</td>
-      <td>***59042</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2352.0</td>
-      <td>N/S</td>
-      <td>THE ESPLANADE</td>
-      <td>E/O</td>
-      <td>FREDERICK ST</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254742</th>
-      <td>4</td>
-      <td>***59043</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2352.0</td>
-      <td>N/S</td>
-      <td>THE ESPLANADE</td>
-      <td>E/O</td>
-      <td>FREDERICK ST</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254743</th>
-      <td>4</td>
-      <td>***39753</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2352.0</td>
-      <td>NR</td>
-      <td>715 CARLAW AVE</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254744</th>
-      <td>4</td>
-      <td>***92317</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2352.0</td>
-      <td>S/S</td>
-      <td>HEATH ST W</td>
-      <td>W/O</td>
-      <td>TWEEDSMUIR AVE</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254745</th>
-      <td>4</td>
-      <td>***19663</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>2353.0</td>
-      <td>AT</td>
-      <td>114 PETER ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254747</th>
-      <td>4</td>
-      <td>***39754</td>
-      <td>20161231</td>
-      <td>29</td>
-      <td>PARK PROHIBITED TIME NO PERMIT</td>
-      <td>30</td>
-      <td>2353.0</td>
-      <td>NR</td>
-      <td>701 CARLAW AVE</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254759</th>
-      <td>4</td>
-      <td>***60163</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3401 DUFFERIN ST</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-    <tr>
-      <th>2254760</th>
-      <td>4</td>
-      <td>***67517</td>
-      <td>20161231</td>
-      <td>3</td>
-      <td>PARK ON PRIVATE PROPERTY</td>
-      <td>30</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>920 SHEPPARD AVE W</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>ON</td>
-    </tr>
-  </tbody>
-</table>
-<p>1100768 rows × 12 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span> <span class="o">=</span> <span class="n">fine_30</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[36]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>43</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>There are 43 different infractions with a set fine of $30.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">infraction_info</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[63]:</div>
 
 
 
@@ -15611,6 +14369,732 @@ Name: infraction_code, Length: 181, dtype: int64</pre>
 </table>
 <p>181 rows × 3 columns</p>
 </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5      401636
+3      367638
+29     339145
+210    213327
+207    131511
+2      116498
+9      110457
+8       76414
+403     74267
+406     68271
+6       64334
+15      35490
+192     26024
+28      25909
+312     21172
+30      19879
+134     15933
+347     14687
+16      13334
+415     12787
+337      8385
+4        6567
+48       6320
+367      6254
+257      6089
+384      6088
+336      5391
+14       4938
+250      4483
+419      4373
+        ...  
+19          2
+334         2
+413         2
+25          1
+434         1
+26          1
+152         1
+385         1
+354         1
+350         1
+348         1
+318         1
+306         1
+222         1
+432         1
+206         1
+182         1
+149         1
+35          1
+131         1
+130         1
+90          1
+89          1
+80          1
+73          1
+45          1
+43          1
+41          1
+39          1
+0           1
+Name: infraction_code, Length: 181, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's filter for tickets with a fine of $30.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[56]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3      367624
+29     339145
+210    213327
+207    131511
+312     21172
+4        6565
+336      5391
+48       4885
+49       3016
+314      2476
+1        1948
+307      1076
+265       991
+313       522
+11        445
+317       185
+335        79
+208        73
+50         59
+315        55
+209        48
+311        32
+51         26
+211        20
+52         19
+56         15
+266        11
+38         10
+309         9
+54          6
+55          6
+430         5
+304         3
+308         3
+40          2
+432         1
+39          1
+41          1
+43          1
+45          1
+306         1
+318         1
+0           1
+Name: infraction_code, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span> <span class="o">=</span> <span class="n">fine_30</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>43</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 43 different infractions with a set fine of $30.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span><span class="p">[[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">,</span> <span class="s1">&#39;infraction_description&#39;</span><span class="p">,</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[52]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1629565</th>
+      <td>0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3325</th>
+      <td>1</td>
+      <td>PARK FAIL TO DEPOSIT FEE METER</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>4</td>
+      <td>PARK ON MUNICIPAL PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>547699</th>
+      <td>11</td>
+      <td>PARK/STOP RGHT WHLS &gt; 30CM CRB</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>30251</th>
+      <td>38</td>
+      <td>PARK OTHER THAN METERED SPACE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>877790</th>
+      <td>39</td>
+      <td>PARK MTRD EXCEEDS MAXIMUM TIME</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>1507382</th>
+      <td>40</td>
+      <td>PARAL PRK-MTRD-FR WHLS NO OPP</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>1640097</th>
+      <td>41</td>
+      <td>PARALLEL PARK-METERED SPACE-RE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>1415452</th>
+      <td>43</td>
+      <td>PARALLEL PARK-METERED SPACE-FR</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>907370</th>
+      <td>45</td>
+      <td>ANGLE PARK-METERED SPACE-FRONT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>543737</th>
+      <td>48</td>
+      <td>FAIL TO PARK/STOP PARALL. CURB</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>543901</th>
+      <td>49</td>
+      <td>FAIL TO PARK/STOP PARALL. RGHT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>577560</th>
+      <td>50</td>
+      <td>FAIL PARK/STP NEAR RIGHT LIMIT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>577078</th>
+      <td>51</td>
+      <td>FAIL ANGLE PARK/STOP AT 45 DEG</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>807083</th>
+      <td>52</td>
+      <td>FAIL TO (PARK/STOP) ANGLE SPCE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>661319</th>
+      <td>54</td>
+      <td>PARK/STOP LEFT WHLS &gt; 30CM LFT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>569084</th>
+      <td>55</td>
+      <td>PRK/STP LEFT WHLS CLSE TO LEFT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>561373</th>
+      <td>56</td>
+      <td>FAIL PARK/STP LEFT WHLS PARALL</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3018</th>
+      <td>207</td>
+      <td>PARK MACHINE-REQD FEE NOT PAID</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>702422</th>
+      <td>208</td>
+      <td>PARK MACHINE-FAIL TO ACTIVATE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>79041</th>
+      <td>209</td>
+      <td>PARK MACHINE-NOT IN PERMITD TM</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3009</th>
+      <td>210</td>
+      <td>PARK FAIL TO DISPLAY RECEIPT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>20408</th>
+      <td>211</td>
+      <td>PARK OTHER THAN METERED SPACE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>442087</th>
+      <td>265</td>
+      <td>PARK VEHICLE ON ROADWAY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>32322</th>
+      <td>266</td>
+      <td>PARK VEHICLE PROHIBITED TIME</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>977202</th>
+      <td>304</td>
+      <td>PARK-FRONT OF VEH NOT OPP MTR</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>643332</th>
+      <td>306</td>
+      <td>ANGLE PARK-TOO FAR FROM METER</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>833</th>
+      <td>307</td>
+      <td>PARK VEHICLE OUTSIDE OF SPACE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>580495</th>
+      <td>308</td>
+      <td>PARK - 2 SPACES - NO FEE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>883789</th>
+      <td>309</td>
+      <td>PARK-2 SPACES-NO FEE-MTR/MACH</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>22666</th>
+      <td>311</td>
+      <td>PARK-FEE NOT PD FOR TIME USED</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>312</td>
+      <td>PARKING MACH-NOT USED/NO FEE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>539598</th>
+      <td>313</td>
+      <td>PARK-FAIL TO ACTIVATE MACHINE</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>314</td>
+      <td>PARK - NOT WITHIN PERIOD</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>28941</th>
+      <td>315</td>
+      <td>PARK-ISSUED CARD NOT DISPLAYED</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>33336</th>
+      <td>317</td>
+      <td>PARK/LEAVE CONTRARY TO SIGN</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>316426</th>
+      <td>318</td>
+      <td>PARK/LEAVE UNPD PARKING INV</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>33619</th>
+      <td>335</td>
+      <td>PARK MORE THAN 7DAYS NO PERMIT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>459</th>
+      <td>336</td>
+      <td>PARK-FAIL TO DISPLAY PERMIT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>1173813</th>
+      <td>430</td>
+      <td>PARK-FAIL TO ACTIVATE METER</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>632077</th>
+      <td>432</td>
+      <td>PARK MOTORCYCLE-METER-GT 60DEG</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look at the top 10 infractions with a fine of $30.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_10</span> <span class="o">=</span> <span class="n">fine_30</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">top_10</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">top_10</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Infraction Code&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ticket Count&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[62]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0,0.5,&#39;Ticket Count&#39;)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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00arb10usSmrvMpCcTnduXOH8+fPs3HjRm7dukW9evVo3bo10dHRtGjRQuljzJgx3L9/n48++ohbt27RtGlTwsPDn/iEJJDrUIUQQgi9kOtQhRBCCD2QgiqEEELogRRUIYQQQg+koAohhBB6IAVVCCGE0AMpqEIIIYQeSEEVohzIy8tj3rx5tGjRgrp16+r1DjJPy83NjYCAAEOn8UxUpvcq9E8KqhB6sGnTJszNzZUL60tr69atLFmyhJ49exIaGqo8G/RZ2b17N0FBQc90zNL48ccf8fPzo3HjxlhaWuLs7MyQIUOIiooydGpCKOROSUKUA7GxsdSpU4dFixY91dNKntSePXtYv379Y+9sc+LECapUMcy/vTUaDePHj1cezTVq1ChsbGxITU1lz549vP3226xZs0YvN8sX4mlJQRWiHEhJSaF27dolFlONRsO9e/f08gQRXT3Lpwg9avny5WzcuJGRI0cSHBysVdgnTpzITz/9RF5ensHyE+JhsstXiDISEBCAWq0mOTkZf39/7O3tcXR05IMPPiAnJweAq1evYm5uzt69e7l27ZpyU/tNmzYBD25yP2nSJH744Qc6dOiAlZUV33//PfBgN7O3tzdNmjTBysqKNm3asHTp0sc+webkyZP4+fnh5OSEjY0NL730kvLMx4CAANavX6+MV/C6evUq8PjjimlpaUyePBkXFxesrKzw8PBgxYoVaDTadzItyH/v3r107NgRtVrNiy++SHh4eInzd/fuXZYsWYKzszNBQUGPXSX37NlTeSReafLKzc1lzpw5NGnSBFtbW7y9vbl48eJj87h9+zYfffQRbm5uWFlZ0aJFC+bOncu9e/dKfA+icpEVqhBlKD8/nwEDBuDq6sq8efM4ceIEGzZsoH79+syePRsLCwtWr17NF198wc2bN/n0008BtB4BFhcXx86dOxk5ciRqtVp53NiaNWtwdname/fumJqaEhMTw9y5c7l9+zazZ89Wfv7AgQMMHjyYevXqMXLkSGxtbbl06RI//vgjkydPxt/fn+vXr3Pw4EFWr16t/NzDz/l82L179+jbty/nz59n+PDhNGnShJ9++omPPvqI69evFzoWe/z4cf79738rD3P+5ptvGDVqFG5uboWeR/mwo0ePkpaWxvvvv0/VqiX/r6o0eU2cOJHNmzfj7e1Nx44d+fXXXxkwYIDyD50Cd+/e5fXXX+fq1asMGzaMBg0acObMGVasWMHFixfZvHlziXmJykMKqhBl6P79+/Tu3ZuPPvoIgOHDh5Oens6GDRuYPXs2ZmZm+Pn5KY+d8vPzK9RHYmIiBw4coGXLllrbo6OjqVGjhvL9iBEjGD9+PKtXr2batGmYmJiQn5/PBx98QN26dYmNjdUqkgWrNg8PDxo1asTBgwcfO/6jNmzYwNmzZ/niiy945513lLHffvttvvzyS0aMGEGjRo2U+AsXLnD48GGlePbv358WLVqwceNGPvnkkyLHSUxMBMDV1bXEnEqT17lz59i8eTNvvfWW1gOy58+fr6zaC6xatYpLly6xf/9+reLfrFkzAgMDOXLkyFM9UFw8X2SXrxBl7L333tP6/uWXXyY1NZXMzEydft7T07NQMQWUYpqXl0d6ejqpqam88sorZGdnKw9O/u2337hy5YpPW1YAAARaSURBVAoBAQGFVpxPevLTnj17qF+/PkOHDtXqa8KECWg0Gn766Set+I4dO2oVIysrK5ydnbly5Uqx4xTMz6OPcXvavPbs2QNQaDf2mDFjCvW5Y8cOPD09sbCwIDU1VXkVPPP04MGDOuUmKgdZoQpRhqpVq4aNjY3WtoIHf6elpelULIp6CHNcXBzz58/nl19+ITc3V6vt4Yc9A3p9CPyff/5Jo0aNCj33s6Bo/vnnn1rb7e3tC/Vhbm5OWlpaseMUzI2u//DQNa9r166hUqlo3LixVpyFhUWhh7L/8ccfnD17VmvF/bCUlBSdchOVgxRUIcpQcZebPHqiTFFMTU0Lbbty5QoDBgygYcOGBAUFYWdnh4mJCb/99htz5sxRTkwqGMMQl+IUKOqB2yW9/4JCmJCQwOuvv663fIob99G2/Px8OnXqxOTJkx8bb2trq7e8RMUnBVWICig6OpqcnBy2bNmCg4ODsr3gzNwCDRs2BB4Upe7duxfZX2kKroODA7/99ht5eXlaxbLgLNmH83ka7du3x9zcnPDwcD788MMiC3Np83JwcECj0fD7779rHZ9NSUlRVvYFGjRoQFZWlrKLV4jiyDFUISqggoLx8Irq3r17fPXVV1pxrVq1wsnJidDQUG7duqXV9vDPFhyPTU9PL3HsV199lZSUFL777jutvpYvX45KpaJnz56lf0OPYWpqyuTJk7l48SKzZs167Mry559/Zvfu3aXKq+C/oaGhWn2tWrWqUP8+Pj78+uuvREdHF2q7e/cuWVlZT/4GxXNHVqhCVEBeXl4YGxszZMgQhg0bRm5uLlu2bCm0i7lKlSosWbKEwYMH07FjR4YOHYqtrS2XL1/m2LFjygk6rVu3BmDKlCl0796dqlWr0qtXL8zMzAqN/c477/DNN98wceJEzpw5Q+PGjdm7dy//1879uioMhWEcf9YUkwzE5oI2m65ZrKaJMC12Bf0bBJeMojCDYFEW/HFkYNmKYclmFf8FUTEZRJsg9wrXyynC88kv7LzpG842z/NQq9Xe3jf+R7PZxG63w2AwQBAEMAwD8Xgch8MBvu8jCAIMh8OPzpVOp1EulzEej3G5XJ6fzazXa6iq+uP5nuehWq3CNE1kMhlcr1fs93sIITCdTqHrurR96bsxqERfKJlMYjKZoN1uo9VqQVVVVCoV5HI5FIvFl9l8Po/VaoVOpwPbtnG73aBpGkzTfM4YhoHNZgMhBGazGe73O7bb7a9BDYVCcF0XlmVBCIHj8YhEIgHLstBoNKTuqSgK+v0+CoUCRqMRbNvG+XxGNBpFNpuF4zjPHzt8cq5er4dYLAbHceD7PnRdx3K5RKlUepkLh8NwXRfdbheLxQLz+RyRSASapqFeryOVSkndl76bcjqd/vZmBBEREb3FO1QiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJGFQiIiIJHrllHGA8tuNQAAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Times-that-Tickets-were-Given">Times that Tickets were Given<a class="anchor-link" href="#Times-that-Tickets-were-Given">&#182;</a></h3><p>We see that most parking tickets are given out around 4pm, and between 9-10am.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;time_of_infraction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1605.0    4798
+1535.0    3513
+1606.0    3497
+1607.0    3454
+1608.0    3304
+1505.0    3153
+1610.0    3126
+950.0     3107
+945.0     3093
+1609.0    3079
+949.0     3055
+951.0     3042
+1611.0    2974
+940.0     2969
+1215.0    2960
+1140.0    2958
+953.0     2958
+947.0     2955
+952.0     2944
+946.0     2939
+1217.0    2927
+1210.0    2923
+944.0     2916
+1220.0    2909
+943.0     2905
+1230.0    2899
+1145.0    2890
+1225.0    2890
+942.0     2890
+936.0     2880
+          ... 
+629.0      120
+553.0      118
+558.0      117
+602.0      111
+603.0      109
+626.0      105
+616.0      104
+601.0      104
+552.0      102
+621.0      102
+551.0      100
+607.0       98
+554.0       96
+624.0       94
+608.0       93
+556.0       92
+622.0       90
+604.0       90
+606.0       88
+611.0       87
+623.0       85
+614.0       85
+618.0       84
+612.0       83
+617.0       82
+557.0       82
+559.0       82
+613.0       71
+619.0       70
+609.0       70
+Name: time_of_infraction, Length: 1440, dtype: int64</pre>
 </div>
 
 </div>
