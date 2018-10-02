@@ -11,7 +11,7 @@
 
 # Align tables in markdown
 
-# In[2]:
+# In[1]:
 
 
 get_ipython().run_cell_magic('html', '', '<style>\n    table {\n        margin-left: 0 !important\n    }\n    td, th {\n        text-align: left !important\n    }\n</style>')
@@ -34,7 +34,7 @@ get_ipython().run_cell_magic('html', '', '<style>\n    table {\n        margin-l
 # |PROVINCE |	Province or state code of vehicle licence plate|
 # 
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pd
@@ -69,7 +69,7 @@ tickets.head()
 
 # Around 4pm is when most tickets are given out. Interesting.
 
-# In[7]:
+# In[6]:
 
 
 tickets.loc[ tickets['time_of_infraction'].isnull() == True]
@@ -77,13 +77,13 @@ tickets.loc[ tickets['time_of_infraction'].isnull() == True]
 
 # We can convert this column since the values are really four digits representing 24 hour time in the format HHMM. There are some null values so we'll ignore those for now.
 
-# In[8]:
+# In[7]:
 
 
 tickets['time_of_infraction'] = tickets['time_of_infraction'].astype('uint16', errors='ignore')
 
 
-# In[9]:
+# In[8]:
 
 
 tickets.loc[ tickets['infraction_code'].isnull() == True]
@@ -91,7 +91,7 @@ tickets.loc[ tickets['infraction_code'].isnull() == True]
 
 # We find that there's one ticket with no infraction code. We could replace it with 0 if 0 isn't an infraction code. We can check that below.
 
-# In[10]:
+# In[9]:
 
 
 tickets[tickets['infraction_code'] == 0]
@@ -99,25 +99,25 @@ tickets[tickets['infraction_code'] == 0]
 
 # We find there is infraction code numbered 0.
 
-# In[11]:
+# In[10]:
 
 
 tickets.loc[1629565, 'infraction_code'] = 0
 
 
-# In[12]:
+# In[11]:
 
 
 tickets[tickets['infraction_code'] == 0]
 
 
-# In[13]:
+# In[12]:
 
 
 tickets['infraction_code'] = tickets['infraction_code'].astype('uint16')
 
 
-# In[14]:
+# In[13]:
 
 
 tickets.info(memory_usage='deep')
@@ -125,13 +125,13 @@ tickets.info(memory_usage='deep')
 
 # We've managed to reduce memory usage by 13MB. We can convert more of our columns however. The origin column just tracks the spreadsheet number that the row belongs to. It was created when we used CSV kit to combine the files. We know there are only 4 spread sheets numbered 1-4 so we don't need an int64 to store the number. Let's use the int8 datatype instead.
 
-# In[15]:
+# In[14]:
 
 
 tickets['origin'] = tickets['origin'].astype('int8')
 
 
-# In[16]:
+# In[15]:
 
 
 tickets.info(memory_usage='deep')
@@ -139,19 +139,19 @@ tickets.info(memory_usage='deep')
 
 # We've saved another 15MB.
 
-# In[17]:
+# In[16]:
 
 
 tickets['set_fine_amount'].value_counts()
 
 
-# In[18]:
+# In[17]:
 
 
 tickets['set_fine_amount'] = tickets['set_fine_amount'].astype('uint16')
 
 
-# In[19]:
+# In[18]:
 
 
 tickets.info(memory_usage='deep')
@@ -163,49 +163,50 @@ tickets.info(memory_usage='deep')
 # 
 # A column of interest of course is the fine amounts so let's look at that first.
 
-# In[20]:
+# In[19]:
 
 
 tickets['set_fine_amount'].value_counts().sort_index()
 
 
-# In[21]:
+# In[20]:
 
 
 (tickets['set_fine_amount'].describe())
 
 
-# In[22]:
+# In[21]:
 
 
 fines = tickets['set_fine_amount'].value_counts().sort_index()
 
 
-# In[23]:
+# In[38]:
 
 
 plt.style.use('fivethirtyeight')
 fines.plot.bar()
 plt.xlabel('Fine Amount')
+plt.xticks(rotation=45)
 plt.ylabel('Ticket Count')
 plt.title('Tickets and Fines')
 
 
 # We can see that almost all of the tickets given out have fines of 30 dollars.
 
-# In[24]:
+# In[23]:
 
 
 tickets['set_fine_amount'].value_counts(normalize=True) * 100
 
 
-# In[25]:
+# In[24]:
 
 
 ticket_total = fines * fines.index
 
 
-# In[26]:
+# In[25]:
 
 
 ticket_total.sum()
@@ -226,14 +227,14 @@ ticket_total.sum()
 # 
 # We can explore the infractions and break it down to see what parking rules drivers are breaking.
 
-# In[63]:
+# In[26]:
 
 
 infraction_info = tickets[['infraction_code','infraction_description','set_fine_amount']].drop_duplicates(subset='infraction_code').sort_values('infraction_code')
 infraction_info
 
 
-# In[28]:
+# In[27]:
 
 
 tickets['infraction_code'].value_counts()
@@ -241,25 +242,25 @@ tickets['infraction_code'].value_counts()
 
 # Let's filter for tickets with a fine of $30.
 
-# In[30]:
+# In[28]:
 
 
 fine_30 = tickets[tickets['set_fine_amount'] == 30]
 
 
-# In[56]:
+# In[29]:
 
 
 fine_30['infraction_code'].value_counts()
 
 
-# In[33]:
+# In[30]:
 
 
 fine_types = fine_30.drop_duplicates(subset='infraction_code')
 
 
-# In[36]:
+# In[31]:
 
 
 fine_types['infraction_code'].count()
@@ -267,7 +268,7 @@ fine_types['infraction_code'].count()
 
 # There are 43 different infractions with a set fine of $30.
 
-# In[52]:
+# In[32]:
 
 
 fine_types[['infraction_code', 'infraction_description','set_fine_amount']].sort_values('infraction_code')
@@ -275,13 +276,13 @@ fine_types[['infraction_code', 'infraction_description','set_fine_amount']].sort
 
 # Let's look at the top 10 infractions with a fine of $30.
 
-# In[116]:
+# In[39]:
 
 
 top_10 = fine_30['infraction_code'].value_counts()[:10]
 top_10 = top_10.sort_values(ascending=False)
+#plt.style.use('ggplot')
 top_10.plot.bar()
-plt.style.use('ggplot')
 plt.xlabel('Infraction Code')
 plt.xticks(rotation=45)
 plt.ylabel('Ticket Count')
@@ -293,22 +294,22 @@ plt.show()
 # 
 # We see that most parking tickets are given out around 4pm, and between 9-10am.
 
-# In[163]:
+# In[34]:
 
 
 times = tickets['time_of_infraction'].value_counts()
 times = times.sort_index()
 
 
-# In[183]:
+# In[41]:
 
 
 fig, ax = plt.subplots()
-
 ax.hist(tickets['time_of_infraction'], range=(0,2400), bins=24, color='orange')
+
 plt.xlabel('Time HH:MM')
 plt.ylabel('Ticket Frequency')
-plt.axvline(1200, c='green', label='Noon', linewidth=2)
-plt.title('Ticket Times')
+plt.axvline(1200, c='blue', label='Noon', linewidth=2)
+plt.title('Ticket Times Cumulative 2016')
 plt.show()
 
