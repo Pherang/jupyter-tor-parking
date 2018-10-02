@@ -192,7 +192,7 @@ plt.ylabel('Ticket Count')
 plt.title('Tickets and Fines')
 
 
-# We can see that almost all of the tickets given out have fines of 30 dollars.
+# We can see that almost all of the tickets given out have set fines of $30 dollars.
 
 # In[23]:
 
@@ -290,9 +290,9 @@ plt.title('Top 10 Infraction Codes')
 plt.show()
 
 
-# ### Times that Tickets were Given
+# ## Times that Tickets were Given
 # 
-# We see that most parking tickets are given out around 4pm, and between 9-10am.
+# We can also look a times that vehicles were ticketed.
 
 # In[34]:
 
@@ -301,7 +301,7 @@ times = tickets['time_of_infraction'].value_counts()
 times = times.sort_index()
 
 
-# In[41]:
+# In[42]:
 
 
 fig, ax = plt.subplots()
@@ -310,6 +310,8 @@ ax.hist(tickets['time_of_infraction'], range=(0,2400), bins=24, color='orange')
 plt.xlabel('Time HH:MM')
 plt.ylabel('Ticket Frequency')
 plt.axvline(1200, c='blue', label='Noon', linewidth=2)
-plt.title('Ticket Times Cumulative 2016')
+plt.title('Ticket Times 2016 Total')
 plt.show()
 
+
+# Parking tickets were given out most frequently at 9am, 12pm, and 3-4pm.
