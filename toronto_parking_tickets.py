@@ -195,7 +195,7 @@ plt.ylabel('Ticket Count')
 plt.title('Tickets and Fines')
 
 
-# We can see that almost all of the tickets given out have fines of 30 dollars. There are some tickets for 
+# We can see that almost all of the tickets given out have fines of 30 dollars.
 
 # In[24]:
 
@@ -215,10 +215,61 @@ ticket_total = fines * fines.index
 ticket_total.sum()
 
 
-# All ticket fines are worth $109,675,985 in revenue. Tickets are challenged in court and they can reduced or dismissed entirely.
+# Total ticket fines are worth **$109,675,985** in revenue. Tickets are challenged in court and they can reduced or dismissed entirely. Unfortunately that data wasn't available. However we can look at the potential amount of revenue parking tickets bring in for the city.
 
-# According to the city of Toronto's Revenue Fact Sheet [here](https://www.toronto.ca/city-government/budget-finances/city-finance/long-term-financial-plan/city-revenue-fact-sheet/)
+# According to the city of Toronto's Revenue Fact [Sheet](https://www.toronto.ca/city-government/budget-finances/city-finance/long-term-financial-plan/city-revenue-fact-sheet/) parking tickets are worth quite a bit of money when compared to additional revenue options that the city can implement. The options highlighted in grey can't be implemented easily.
 # 
 # 
 
 # ![revenue options](revenue_options_kpmg.png)
+
+# ## Deeper Exploration of Tickets
+# 
+# Now that we have some general information about parking fines we can explore what people are being fined for.
+# We know the most common fine is $30 and that the number of fines is more than 1M.
+# 
+# We can explore the infractions and break it down to see what parking rules drivers are breaking.
+
+# In[39]:
+
+
+infraction_info = tickets[['infraction_code','infraction_description','set_fine_amount']].drop_duplicates(subset='infraction_code').sort_values('infraction_code')
+
+
+# In[28]:
+
+
+tickets['infraction_code'].value_counts()
+
+
+# In[30]:
+
+
+fine_30 = tickets[tickets['set_fine_amount'] == 30]
+
+
+# In[31]:
+
+
+fine_30
+
+
+# In[33]:
+
+
+fine_types = fine_30.drop_duplicates(subset='infraction_code')
+
+
+# In[36]:
+
+
+fine_types['infraction_code'].count()
+
+
+# There are 43 different infractions with a set fine of $30.
+
+# In[40]:
+
+
+infraction_info
+

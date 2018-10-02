@@ -13900,7 +13900,7 @@ Name: set_fine_amount, dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can see that almost all of the tickets given out have fines of 30 dollars. There are some tickets for</p>
+<p>We can see that almost all of the tickets given out have fines of 30 dollars.</p>
 
 </div>
 </div>
@@ -14002,7 +14002,7 @@ Name: set_fine_amount, dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>All ticket fines are worth $109,675,985 in revenue. Tickets are challenged in court and they can reduced or dismissed entirely.</p>
+<p>Total ticket fines are worth <strong>$109,675,985</strong> in revenue. Tickets are challenged in court and they can reduced or dismissed entirely. Unfortunately that data wasn't available. However we can look at the potential amount of revenue parking tickets bring in for the city.</p>
 
 </div>
 </div>
@@ -14011,7 +14011,7 @@ Name: set_fine_amount, dtype: float64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>According to the city of Toronto's Revenue Fact Sheet <a href="https://www.toronto.ca/city-government/budget-finances/city-finance/long-term-financial-plan/city-revenue-fact-sheet/">here</a></p>
+<p>According to the city of Toronto's Revenue Fact <a href="https://www.toronto.ca/city-government/budget-finances/city-finance/long-term-financial-plan/city-revenue-fact-sheet/">Sheet</a> parking tickets are worth quite a bit of money when compared to additional revenue options that the city can implement. The options highlighted in grey can't be implemented easily.</p>
 
 </div>
 </div>
@@ -14024,6 +14024,1600 @@ Name: set_fine_amount, dtype: float64</pre>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deeper-Exploration-of-Tickets">Deeper Exploration of Tickets<a class="anchor-link" href="#Deeper-Exploration-of-Tickets">&#182;</a></h2><p>Now that we have some general information about parking fines we can explore what people are being fined for.
+We know the most common fine is $30 and that the number of fines is more than 1M.</p>
+<p>We can explore the infractions and break it down to see what parking rules drivers are breaking.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">infraction_info</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">,</span><span class="s1">&#39;infraction_description&#39;</span><span class="p">,</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5      401636
+3      367638
+29     339145
+210    213327
+207    131511
+2      116498
+9      110457
+8       76414
+403     74267
+406     68271
+6       64334
+15      35490
+192     26024
+28      25909
+312     21172
+30      19879
+134     15933
+347     14687
+16      13334
+415     12787
+337      8385
+4        6567
+48       6320
+367      6254
+257      6089
+384      6088
+336      5391
+14       4938
+250      4483
+419      4373
+        ...  
+19          2
+334         2
+413         2
+25          1
+434         1
+26          1
+152         1
+385         1
+354         1
+350         1
+348         1
+318         1
+306         1
+222         1
+432         1
+206         1
+182         1
+149         1
+35          1
+131         1
+130         1
+90          1
+89          1
+80          1
+73          1
+45          1
+43          1
+41          1
+39          1
+0           1
+Name: infraction_code, Length: 181, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span> <span class="o">=</span> <span class="n">tickets</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">&#39;set_fine_amount&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_30</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>tag_number_masked</th>
+      <th>date_of_infraction</th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+      <th>time_of_infraction</th>
+      <th>location1</th>
+      <th>location2</th>
+      <th>location3</th>
+      <th>location4</th>
+      <th>province</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>***03850</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>NR</td>
+      <td>49 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>***03851</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>1.0</td>
+      <td>NR</td>
+      <td>45 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>***98221</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2.0</td>
+      <td>NR</td>
+      <td>274 GEORGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>***85499</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2.0</td>
+      <td>NR</td>
+      <td>270 GEORGE ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>***16117</td>
+      <td>20160101</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>621 KING ST W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>***03853</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>3.0</td>
+      <td>NR</td>
+      <td>43 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>***03854</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>4.0</td>
+      <td>NR</td>
+      <td>39 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>***03856</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>5.0</td>
+      <td>NR</td>
+      <td>31 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>***12254</td>
+      <td>20160101</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>25 MUTUAL ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>***98222</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>7.0</td>
+      <td>NR</td>
+      <td>167 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1</td>
+      <td>***27500</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>7.0</td>
+      <td>NR</td>
+      <td>163 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>***98223</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>8.0</td>
+      <td>NR</td>
+      <td>157 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1</td>
+      <td>***27501</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>8.0</td>
+      <td>NR</td>
+      <td>161 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1</td>
+      <td>***98224</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>9.0</td>
+      <td>NR</td>
+      <td>157 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1</td>
+      <td>***03857</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>9.0</td>
+      <td>NR</td>
+      <td>92 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>***27502</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>9.0</td>
+      <td>NR</td>
+      <td>151 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NY</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1</td>
+      <td>***98225</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>10.0</td>
+      <td>NR</td>
+      <td>149 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>QC</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>***03858</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>10.0</td>
+      <td>NR</td>
+      <td>100 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>1</td>
+      <td>***03859</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>11.0</td>
+      <td>NR</td>
+      <td>100 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1</td>
+      <td>***03860</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>12.0</td>
+      <td>NR</td>
+      <td>100 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>***03861</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>13.0</td>
+      <td>NR</td>
+      <td>100 GLOUCESTER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>***27504</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>13.0</td>
+      <td>NR</td>
+      <td>79 GERRARD ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>1</td>
+      <td>***03862</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>15.0</td>
+      <td>NR</td>
+      <td>80 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>***03863</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>16.0</td>
+      <td>NR</td>
+      <td>80 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>1</td>
+      <td>***03864</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>16.0</td>
+      <td>NR</td>
+      <td>88 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>1</td>
+      <td>***03865</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>17.0</td>
+      <td>NR</td>
+      <td>88 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1</td>
+      <td>***98226</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>18.0</td>
+      <td>NR</td>
+      <td>43 BRITAIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>***03866</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>19.0</td>
+      <td>NR</td>
+      <td>62 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1</td>
+      <td>***27505</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>19.0</td>
+      <td>NR</td>
+      <td>45 BRITAIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>1</td>
+      <td>***03867</td>
+      <td>20160101</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>20.0</td>
+      <td>NR</td>
+      <td>64 CHARLES ST E</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2254691</th>
+      <td>4</td>
+      <td>***59033</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2314.0</td>
+      <td>NR</td>
+      <td>77 MCGILL ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>QC</td>
+    </tr>
+    <tr>
+      <th>2254692</th>
+      <td>4</td>
+      <td>***48980</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2315.0</td>
+      <td>NaN</td>
+      <td>208 QUEENS QUAY W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254693</th>
+      <td>4</td>
+      <td>***18780</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2315.0</td>
+      <td>NaN</td>
+      <td>5 VICORA LINKWAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254694</th>
+      <td>4</td>
+      <td>***76764</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2315.0</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254696</th>
+      <td>4</td>
+      <td>***59034</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2315.0</td>
+      <td>NR</td>
+      <td>77 MCGILL ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254704</th>
+      <td>4</td>
+      <td>***59036</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2325.0</td>
+      <td>NR</td>
+      <td>237 VICTORIA ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254705</th>
+      <td>4</td>
+      <td>***11870</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2326.0</td>
+      <td>NaN</td>
+      <td>108 CHESTNUT ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254716</th>
+      <td>4</td>
+      <td>***12257</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2333.0</td>
+      <td>AT</td>
+      <td>800 LAWRENCE AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254718</th>
+      <td>4</td>
+      <td>***12258</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2335.0</td>
+      <td>AT</td>
+      <td>800 LAWRENCE AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254719</th>
+      <td>4</td>
+      <td>***59037</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2337.0</td>
+      <td>S/S</td>
+      <td>WILTON ST</td>
+      <td>E/O</td>
+      <td>GEORGE ST S</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254720</th>
+      <td>4</td>
+      <td>***12259</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2337.0</td>
+      <td>AT</td>
+      <td>800 LAWRENCE AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254721</th>
+      <td>4</td>
+      <td>***59038</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2338.0</td>
+      <td>E/S</td>
+      <td>GEORGE ST S</td>
+      <td>N/O</td>
+      <td>WILTON ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254722</th>
+      <td>4</td>
+      <td>***00360</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2338.0</td>
+      <td>AT</td>
+      <td>15 EVA RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254726</th>
+      <td>4</td>
+      <td>***56384</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2342.0</td>
+      <td>NaN</td>
+      <td>80 JOHN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254730</th>
+      <td>4</td>
+      <td>***92315</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2346.0</td>
+      <td>NR</td>
+      <td>26 TICHESTER RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>AB</td>
+    </tr>
+    <tr>
+      <th>2254731</th>
+      <td>4</td>
+      <td>***59039</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2347.0</td>
+      <td>NR</td>
+      <td>89 HENRY LANE TER</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254732</th>
+      <td>4</td>
+      <td>***92316</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2348.0</td>
+      <td>NR</td>
+      <td>14 TICHESTER RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254733</th>
+      <td>4</td>
+      <td>***39751</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>NR</td>
+      <td>729 CARLAW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254734</th>
+      <td>4</td>
+      <td>***66104</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2349.0</td>
+      <td>AT</td>
+      <td>550 BIRCHMOUNT RD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254735</th>
+      <td>4</td>
+      <td>***59040</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2350.0</td>
+      <td>N/S</td>
+      <td>THE ESPLANADE</td>
+      <td>E/O</td>
+      <td>FREDERICK ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254736</th>
+      <td>4</td>
+      <td>***39752</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2350.0</td>
+      <td>NR</td>
+      <td>715 CARLAW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254739</th>
+      <td>4</td>
+      <td>***59041</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2351.0</td>
+      <td>N/S</td>
+      <td>THE ESPLANADE</td>
+      <td>E/O</td>
+      <td>FREDERICK ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254741</th>
+      <td>4</td>
+      <td>***59042</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2352.0</td>
+      <td>N/S</td>
+      <td>THE ESPLANADE</td>
+      <td>E/O</td>
+      <td>FREDERICK ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254742</th>
+      <td>4</td>
+      <td>***59043</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2352.0</td>
+      <td>N/S</td>
+      <td>THE ESPLANADE</td>
+      <td>E/O</td>
+      <td>FREDERICK ST</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254743</th>
+      <td>4</td>
+      <td>***39753</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2352.0</td>
+      <td>NR</td>
+      <td>715 CARLAW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254744</th>
+      <td>4</td>
+      <td>***92317</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2352.0</td>
+      <td>S/S</td>
+      <td>HEATH ST W</td>
+      <td>W/O</td>
+      <td>TWEEDSMUIR AVE</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254745</th>
+      <td>4</td>
+      <td>***19663</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>2353.0</td>
+      <td>AT</td>
+      <td>114 PETER ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254747</th>
+      <td>4</td>
+      <td>***39754</td>
+      <td>20161231</td>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+      <td>2353.0</td>
+      <td>NR</td>
+      <td>701 CARLAW AVE</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254759</th>
+      <td>4</td>
+      <td>***60163</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3401 DUFFERIN ST</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <th>2254760</th>
+      <td>4</td>
+      <td>***67517</td>
+      <td>20161231</td>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>920 SHEPPARD AVE W</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ON</td>
+    </tr>
+  </tbody>
+</table>
+<p>1100768 rows × 12 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span> <span class="o">=</span> <span class="n">fine_30</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fine_types</span><span class="p">[</span><span class="s1">&#39;infraction_code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>43</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are 43 different infractions with a set fine of $30.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">infraction_info</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[40]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>infraction_code</th>
+      <th>infraction_description</th>
+      <th>set_fine_amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1629565</th>
+      <td>0</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>3325</th>
+      <td>1</td>
+      <td>PARK FAIL TO DEPOSIT FEE METER</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>777</th>
+      <td>2</td>
+      <td>PARK - LONGER THAN 3 HOURS</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>PARK ON PRIVATE PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>4</td>
+      <td>PARK ON MUNICIPAL PROPERTY</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>5</td>
+      <td>PARK-SIGNED HWY-PROHIBIT DY/TM</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>538</th>
+      <td>6</td>
+      <td>PARK-SIGNED HWY-EXC PERMT TIME</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>43632</th>
+      <td>7</td>
+      <td>PARK/LEAVE-FIRE ROUTE</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>8</td>
+      <td>STAND VEH.-PROHIBIT TIME/DAY</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>9</td>
+      <td>STOP-SIGNED HWY-PROHIBIT TM/DY</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>74447</th>
+      <td>10</td>
+      <td>PARK UNAUTH VEH IN HDCPD SPACE</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1172</th>
+      <td>11</td>
+      <td>PARK/STOP RGHT WHLS &gt; 30CM CRB</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>2628</th>
+      <td>12</td>
+      <td>PARK VEHICLE - FOR SALE</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>104261</th>
+      <td>13</td>
+      <td>PARK VEH.-WASH/GREASE/REPAIR</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>14</td>
+      <td>PARK-OBSTRUCT (DRWAY/LANEWAY)</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>15</td>
+      <td>PARK-WITHIN 3M OF FIRE HYDRANT</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>16</td>
+      <td>PARK-WITHIN 9M INTERSECT ROAD</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>27148</th>
+      <td>17</td>
+      <td>PARK-SIGNED HWY-15M INTERSECTN</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>45560</th>
+      <td>18</td>
+      <td>PARK-30.5M SIGNALIZED INTERSCT</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>941418</th>
+      <td>19</td>
+      <td>PARK-FRONT OF BLDG ENTRY/EXIT</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>77490</th>
+      <td>20</td>
+      <td>PARK-7.5M FIRE HALL SAME SIDE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>44733</th>
+      <td>21</td>
+      <td>PARK-30.5M FIRE HALL OPP SIDE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>772253</th>
+      <td>22</td>
+      <td>PARK-15M FAR SIDE OF CROSSWALK</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>529040</th>
+      <td>23</td>
+      <td>PARK-30.5M APPROACH TO CRSSWLK</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1352226</th>
+      <td>25</td>
+      <td>STAND SIGNED TAXICAB STAND</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2162863</th>
+      <td>26</td>
+      <td>PARK - ON BOULEVARD</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>28</td>
+      <td>PARK-N.YORK 2AM-6AM DEC1-MAR31</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>PARK PROHIBITED TIME NO PERMIT</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>539</th>
+      <td>30</td>
+      <td>STOP-(ON/OVER) (SIDEWK/FTPATH)</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>31</td>
+      <td>STOP-ROAD SIDE-STOP/PARK VEH.</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>45373</th>
+      <td>372</td>
+      <td>PARK BUS-SIGNED HWY-PROH DY/TM</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>373</td>
+      <td>STOP BUS-SIGNED HWY-PROH DY/TM</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>6806</th>
+      <td>374</td>
+      <td>STND BUS-SIGNED HWY-PROH DY/TM</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>9634</th>
+      <td>383</td>
+      <td>STOP NON-BICYCLE IN CYCLE TRCK</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>1185</th>
+      <td>384</td>
+      <td>STOP VEH OTR THN BCYCL-BYCL LN</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>417761</th>
+      <td>385</td>
+      <td>PARK PRO VEH ON FOOTPATH</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>6906</th>
+      <td>386</td>
+      <td>PARK PRO VEH ON PEDESTRIAN WAY</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>9026</th>
+      <td>387</td>
+      <td>PARK PRO VEH ON BICYCLE PATH</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>16375</th>
+      <td>401</td>
+      <td>PARK-SIGNED HWY-RUSH HOUR</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>13422</th>
+      <td>402</td>
+      <td>STAND VEH.-SIGNED HWY-RUSH HR</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>10393</th>
+      <td>403</td>
+      <td>STOP-SIGNED HIGHWAY-RUSH HOUR</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>6942</th>
+      <td>404</td>
+      <td>STOP-9 M PEDESTRIAN X BEYOND</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>6943</th>
+      <td>405</td>
+      <td>STOP-15M PEDESTRIAN X APPROACH</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>406</td>
+      <td>PARK-VEH. W/O VALID ONT PLATE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>693</th>
+      <td>407</td>
+      <td>PARK-W/O VALID NON-ONT PLATE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>23900</th>
+      <td>408</td>
+      <td>PARK-15M MAILBOX SAME SIDE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>143708</th>
+      <td>409</td>
+      <td>STOP-WITHIN 9M OF SCHOOL CROSS</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>71875</th>
+      <td>410</td>
+      <td>PARK/STAND CAR-SHARE VEH.-PERM</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>69980</th>
+      <td>413</td>
+      <td>PARK E-VEH. IN EV SP EXCESS TM</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1151</th>
+      <td>414</td>
+      <td>PARK VEH.-COMMERCIAL LOAD ZONE</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1952</th>
+      <td>415</td>
+      <td>PARK COMMERC LOAD ZONE NOT LDG</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>123480</th>
+      <td>416</td>
+      <td>STAND VEH.-PSGR LD ZN DAY TIME</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>21028</th>
+      <td>417</td>
+      <td>STAND VEH.-PSGR LD ZN LD/UNLD</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>17533</th>
+      <td>418</td>
+      <td>PARK TAXI FOR HIRE-UNAUTH LOC</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1127</th>
+      <td>419</td>
+      <td>STAND NON-TAXI IN SIGNED STAND</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>10256</th>
+      <td>420</td>
+      <td>STAND TAXI-SIGNED STD-NOT HIRE</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>14265</th>
+      <td>423</td>
+      <td>STOP VEH.RESRVD/DESIG LN TM/DY</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1173813</th>
+      <td>430</td>
+      <td>PARK-FAIL TO ACTIVATE METER</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>632077</th>
+      <td>432</td>
+      <td>PARK MOTORCYCLE-METER-GT 60DEG</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>324090</th>
+      <td>434</td>
+      <td>PARK IN ELECTRIC VEHICLE SPACE</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+<p>181 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
